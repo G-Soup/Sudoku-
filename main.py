@@ -13,6 +13,9 @@ board =[['5','3','.','.','7','.','.','.','.'], \
         ['.','.','.','4','1','9','.','.','5'], \
         ['.','.','.','.','8','.','.','7','9']]
 
+board2 = [[".",".","9","7","4","8",".",".","."],["7",".",".",".",".",".",".",".","."],[".","2",".","1",".","9",".",".","."],[".",".","7",".",".",".","2","4","."],[".","6","4",".","1",".","5","9","."],[".","9","8",".",".",".","3",".","."],[".",".",".","8",".","3",".","2","."],[".",".",".",".",".",".",".",".","6"],[".",".",".","2","7","5","9",".","."]]
+
+
 def parse_possible(board):
     possible_values = []
     for x in range(9):
@@ -64,10 +67,40 @@ def remove_peers(board, x, y):
     return possible_values
 
 
+def is_cell_solved(possible_values):
+    for x in range(9):
+        for y in range(9):
+            if possible_values[x][y] != '.' and len(possible_values[x][y]) == 1:
+                return [x,y]
+    return False
+
+def is_solved(board):
+    for line in board:
+        for element in line:
+            if element =='.':
+                return False
+    return True
 
 
 
 
-#print(parse_possible(board))
-for line in parse_possible(board):
-    print(line)
+
+
+def main():
+    limit = 0
+
+    while(not is_solved(board)):
+        possible_values = parse_possible(board)
+        limit += 1
+        #check if any cells are solved
+        flag = is_cell_solved(possible_values)
+        if flag:
+            board[flag[0]][flag[1]] = possible_values[flag[0]][flag[1]][0]
+            continue
+        if limit > 1000:
+            break
+    for line in board:
+        print(line)
+
+
+main()
