@@ -35,14 +35,12 @@ def main(input):
         if flag:
             board[flag[0]][flag[1]] = possible_values[flag[0]][flag[1]][0]
             continue
+        
         if limit > 1000:
             break
     
-    for line in board:
-        print(line)
-    print("\n\\n")
-    print(board)
+    
     return board
 
 
-main(board)
+main(board2)

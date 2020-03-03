@@ -65,5 +65,42 @@ def is_solved(board):
     return True
 
 
+#returns a number if it is the only peer who can hold that number
+def check_if_only_peer(possible_values, x, y):
+    horiz_peer_possible_values = []
+    vert_peer_possible_values = []
+    square_peer_possible_values = []
+    #check horizontal line
+    for num in possible_values[x]:
+        if num != '.':
+            horiz_peer_possible_values.append(num)
+            
 
-
+    #check vertical line
+    for i in range(9):
+        if possible_values[i][y] != '.':
+            vert_peer_possible_values.append(possible_values[i][y])
+        
+            
+    #cheeky way to find which square you're in
+    loc = [int(x/3)*3,int(y/3)*3]
+    #check square
+    for i in range(3):
+        for j in range(3):
+            if possible_values[i][y] != '.':
+                square_peer_possible_values.append(possible_values[i+loc[0]][j+loc[1]])
+    peer_possible_values = horiz_peer_possible_values + vert_peer_possible_values + square_peer_possible_values
+    
+    
+    for num in possible_values[x][y]:
+        count = 0
+        for peer_nums in peer_possible_values:
+            
+            for peer_num in peer_nums:
+                if peer_num == num:
+                    count +=1
+        
+        if count < 4:
+            print("This is the num: " + str(num))
+            return num
+    return False
