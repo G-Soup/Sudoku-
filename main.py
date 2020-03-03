@@ -24,9 +24,9 @@ board2 =   [[".",".","9","7","4","8",".",".","."],\
             [".",".",".","2","7","5","9",".","."]]
 
 
-def main():
+def main(input):
     limit = 0
-
+    board = input
     while(not is_solved(board)):
         possible_values = parse_possible(board)
         limit += 1
@@ -37,8 +37,12 @@ def main():
             continue
         if limit > 1000:
             break
+    
     for line in board:
         print(line)
+    print("\n\\n")
+    print(board)
+    return board
 
 
-main()
+main(board)
