@@ -2,7 +2,7 @@ import unittest
 from Solution import *
 from main import *
 
-class SimplePuzzle(unittest.TestCase):
+class MainTestCase(unittest.TestCase):
 
     def setUp(self):
         pass
