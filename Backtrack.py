@@ -31,11 +31,11 @@ def guess_solve(board):
 
 def is_valid(board, number, location):
 
-    for x in range(9):
+    for x in range(len(board)):
         if board[location[0]][x] == number and location[1] != x:
             return False
     
-    for x in range(9):
+    for x in range(len(board)):
         if board[x][location[1]] == number and location[0] != x:
             return False
     
