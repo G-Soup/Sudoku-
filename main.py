@@ -52,5 +52,5 @@ def main2(input):
         print("Not able to be solved: \n")
 
         
-
-main(board)
+main2(board)
+#main(board)

@@ -15,4 +15,4 @@ Create completed sudoku from an empty puzzle
 
 Visual represantion of solvers and puzzle creator
 
-make guess_solve use p-random guesses
+Need to check if there are multiple solutions to a puzzle

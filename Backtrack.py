@@ -1,4 +1,4 @@
-
+from random import shuffle
 
 
 def print_board(board):
@@ -20,7 +20,10 @@ def guess_solve(board):
         row = empty[0]
         column = empty[1]
     
-    for x in range(1,10):
+    list_of_nums = [1,2,3,4,5,6,7,8,9]
+    shuffle(list_of_nums)
+
+    for x in list_of_nums:
         if is_valid(board, str(x), [row, column]):
             board[row][column] = str(x)
 
