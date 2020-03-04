@@ -1,6 +1,7 @@
 import unittest
 from Solution import *
 from main import *
+from CreateSudoku import *
 
 class MainTestCase(unittest.TestCase):
 
@@ -111,6 +112,13 @@ class BackTrackTestCases(unittest.TestCase):
             ['.','.','.','.','8','.','.','7','9']]
         assert(is_valid(board,4,[0,2])) == True, "is_valid failed"
 
+class CreateSudokuTestCase(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def testCreateSudoku(self):
+        assert(is_solved(create_completed_sudoku())) == True, "create_completed_sudoku failed"
+        
 
 if __name__ == "__main__":
     unittest.main()
