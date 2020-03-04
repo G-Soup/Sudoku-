@@ -104,3 +104,12 @@ def check_if_only_peer(possible_values, x, y):
             print("This is the num: " + str(num))
             return num
     return False
+"""
+def check_for_lone_peer(possible_values):
+    for x in range(9):
+        for y in range(9):
+            flag = check_if_only_peer(possible_values,x,y)
+            if flag:
+                return [x, y, flag]
+    return False
+"""

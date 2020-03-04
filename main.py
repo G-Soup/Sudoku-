@@ -1,7 +1,7 @@
 #! python3
 
 from Solution import *
-
+from Backtrack import *
 #test boards
 board =[['5','3','.','.','7','.','.','.','.'], \
         ['6','.','.','1','9','5','.','.','.'], \
@@ -23,7 +23,8 @@ board2 =   [[".",".","9","7","4","8",".",".","."],\
             [".",".",".",".",".",".",".",".","6"],\
             [".",".",".","2","7","5","9",".","."]]
 
-
+"""
+#main for Solution.py
 def main(input):
     limit = 0
     board = input
@@ -39,8 +40,17 @@ def main(input):
         if limit > 1000:
             break
     
-    
+    print(board)
     return board
+"""
 
+
+def main(input):
+    if guess_solve(input):
+        print_board(input)
+    else:
+        print("Not able to be solved: \n")
+
+        
 
 main(board2)
