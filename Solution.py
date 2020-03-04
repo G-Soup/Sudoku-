@@ -5,19 +5,13 @@ def parse_possible(board):
         array = []
         for y in range(9):
             if board[x][y] == '.':
-                array.append(get_possible_values(board, x, y))
+                array.append(remove_peers(board, x, y))
             else:
                 #want to have a period for solved numbers
                 array.append('.')
         possible_values.append(array)
 
     return possible_values
-
-def get_possible_values(board, x, y):
-    
-    possible = remove_peers(board, x, y)
-    
-    return possible
 
 #IMPORTANT: Replace try except with better DNE handling
 #peers are the other locations on the board that directly affect a specific location

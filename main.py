@@ -23,7 +23,7 @@ board2 =   [[".",".","9","7","4","8",".",".","."],\
             [".",".",".",".",".",".",".",".","6"],\
             [".",".",".","2","7","5","9",".","."]]
 
-"""
+
 #main for Solution.py
 def main(input):
     limit = 0
@@ -42,10 +42,10 @@ def main(input):
     
     print(board)
     return board
-"""
 
 
-def main(input):
+
+def main2(input):
     if guess_solve(input):
         print_board(input)
     else:
@@ -53,4 +53,4 @@ def main(input):
 
         
 
-main(board2)
+main(board)
