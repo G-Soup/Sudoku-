@@ -12,10 +12,13 @@ def find_empty(board):
             if board[x][y] == '.':
                 return [x,y]
 
-def guess_solve(board):
+def guess_solve(board, not_this_board=0):
     empty = find_empty(board)
     if not empty:
-        return True
+        if board != not_this_board:
+            return True
+        else:
+            return False
     else:
         row = empty[0]
         column = empty[1]
@@ -27,7 +30,7 @@ def guess_solve(board):
         if is_valid(board, str(x), [row, column]):
             board[row][column] = str(x)
 
-            if guess_solve(board):
+            if guess_solve(board, not_this_board):
                 return True
             board[row][column] = '.'
     return False
@@ -50,3 +53,4 @@ def is_valid(board, number, location):
                 return False
     
     return True
+
