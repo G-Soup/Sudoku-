@@ -123,6 +123,9 @@ class BackTrackTestCases(unittest.TestCase):
             ['.','.','.','4','1','9','.','.','5'], \
             ['.','.','.','.','8','.','.','7','9']]
         assert(is_valid(board,4,[0,2])) == True, "is_valid failed"
+    def testHasMultipleSolutions(self):
+        board = [['.', '.', '.', '.', '.', '.', '.', '.', '.'], ['.', '.', '.', '.', '7', '6', '1', '2', '9'], ['7', '6', '9', '2', '5', '1', '4', '8', '3'], ['8', '3', '7', '5', '2', '9', '6', '1', '4'], ['9', '5', '1', '7', '6', '4', '8', '3', '2'], ['4', '2', '6', '8', '1', '3', '9', '7', '5'], ['6', '9', '5', '1', '3', '2', '7', '4', '8'], ['1', '4', '2', '9', '8', '7', '3', '5', '6'], ['3', '7', '8', '6', '4', '5', '2', '9', '1']]
+        assert(has_multiple_solutions(board)) == True, "has_multiple_solutions failed"
 
 class CreateSudokuTestCase(unittest.TestCase):
     def setUp(self):
@@ -130,7 +133,10 @@ class CreateSudokuTestCase(unittest.TestCase):
 
     def testCreateSudoku(self):
         assert(is_solved(create_completed_sudoku())) == True, "create_completed_sudoku failed"
-        
+    def testCreateUnsolvedSudoku(self):
+        board = create_completed_sudoku()
+        create_unsolved_sudoku(board)
+        assert(has_multiple_solutions(board)) == False, "CreateUnsolved failed"
 
 if __name__ == "__main__":
     unittest.main()

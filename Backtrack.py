@@ -1,20 +1,43 @@
 from random import shuffle
-
+from copy import deepcopy
 
 def print_board(board):
     for x in range(9):
         print(board[x])
-        print('\n')
+    print('\n')
+        
 
 def find_empty(board):
     for x in range(9):
         for y in range(9):
             if board[x][y] == '.':
                 return [x,y]
+def find_filled(board):
+    x_coor = [0,1,2,3,4,5,6,7,8]
+    y_coor = [0,1,2,3,4,5,6,7,8]
+    for x in x_coor:
+        for y in y_coor:
+            if board[x][y] != '.':
+                return[x,y]
+
+def has_multiple_solutions(board):
+    tempboard1 = deepcopy(board)
+    tempboard2 = deepcopy(board)
+
+    #solve once
+    guess_solve(tempboard1)
+    
+    #
+    return guess_solve(tempboard2, tempboard1)
+    
+
+
 
 def guess_solve(board, not_this_board=0):
     empty = find_empty(board)
     if not empty:
+
+        #returns True if full
         if board != not_this_board:
             return True
         else:
@@ -33,6 +56,8 @@ def guess_solve(board, not_this_board=0):
             if guess_solve(board, not_this_board):
                 return True
             board[row][column] = '.'
+
+    
     return False
 
 def is_valid(board, number, location):
