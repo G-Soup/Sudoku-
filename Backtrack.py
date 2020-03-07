@@ -15,6 +15,9 @@ def find_empty(board):
 def find_filled(board):
     x_coor = [0,1,2,3,4,5,6,7,8]
     y_coor = [0,1,2,3,4,5,6,7,8]
+    shuffle(x_coor)
+    shuffle(y_coor)
+
     for x in x_coor:
         for y in y_coor:
             if board[x][y] != '.':
