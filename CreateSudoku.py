@@ -15,6 +15,7 @@ def check_square():
 
 
 def create_completed_sudoku():
+    """Creates a random board"""
     board = [['.','.','.', '.','.','.', '.','.','.'],
             ['.','.','.', '.','.','.', '.','.','.'],
             ['.','.','.', '.','.','.', '.','.','.'],
@@ -29,6 +30,7 @@ def create_completed_sudoku():
     return board
 
 def create_unsolved_sudoku(board):
+    """Takes a solved board and creates a solved board"""
     #create a solved board
     filled = find_filled(board)
     
@@ -45,8 +47,4 @@ def create_unsolved_sudoku(board):
     if has_multiple_solutions(board):
         board[filled[0]][filled[1]] = temp_value
     return board
-
-
-
-
-
+    

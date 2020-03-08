@@ -132,3 +132,5 @@ dmypy.json
 #react stuff
 reactnative/
 my-project/
+sudoku/
+.vscode/

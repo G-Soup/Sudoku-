@@ -2,17 +2,22 @@ from random import shuffle
 from copy import deepcopy
 
 def print_board(board):
+    """
+    Simple print function
+    """
     for x in range(9):
         print(board[x])
     print('\n')
         
 
 def find_empty(board):
+    """ Finds an empty location and returns its coords"""
     for x in range(9):
         for y in range(9):
             if board[x][y] == '.':
                 return [x,y]
 def find_filled(board):
+    """Finds a random filled location and returns its coords"""
     x_coor = [0,1,2,3,4,5,6,7,8]
     y_coor = [0,1,2,3,4,5,6,7,8]
     shuffle(x_coor)
@@ -24,6 +29,7 @@ def find_filled(board):
                 return[x,y]
 
 def has_multiple_solutions(board):
+    """Checks if a board has more than one solution"""
     tempboard1 = deepcopy(board)
     tempboard2 = deepcopy(board)
 
@@ -37,6 +43,7 @@ def has_multiple_solutions(board):
 
 
 def guess_solve(board, not_this_board=0):
+    """Solves the board using backtracking. Optional argument to remove a possible solution"""
     empty = find_empty(board)
     if not empty:
 
@@ -49,6 +56,8 @@ def guess_solve(board, not_this_board=0):
         row = empty[0]
         column = empty[1]
     
+    #Test numbers in a random order
+    #Makes code reusable for createSudoku.py
     list_of_nums = [1,2,3,4,5,6,7,8,9]
     shuffle(list_of_nums)
 
@@ -64,7 +73,7 @@ def guess_solve(board, not_this_board=0):
     return False
 
 def is_valid(board, number, location):
-
+    """Checks against the basic rules of Sudoku(row, column, square)"""
     for x in range(len(board)):
         if board[location[0]][x] == number and location[1] != x:
             return False
